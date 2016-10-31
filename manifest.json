@@ -1,0 +1,44 @@
+{
+    "name": "Instagram Photoscraper",
+    "description": "Enables end users to download instagram data",
+    "version": "0.2",
+    "manifest_version": 2,
+    "minimum_chrome_version": "6",  
+
+    "background": {
+        "scripts": [
+            "js/background.js",
+            "js/jquery-3.0.0.min.js"
+        ]
+    },
+/*
+    "icons": { 
+        "48":  "img/itlyst-fork-logo-128x128-black.png",
+        "128": "img/itlyst-fork-logo-128x128-white.png" 
+    },
+*/
+    "browser_action": {
+       // "default_icon": "img/itlyst-fork-logo-128x128-white.png",
+        "default_popup":"popup.html"
+    },
+    
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "js/jquery-3.0.0.min.js",
+                "js/scrape.js"
+            ]
+            //,"run_at": "document_end"
+        }
+    ],
+    "permissions": [
+        "http://*/*",
+        "https://*/*",
+        "contextMenus",
+        "activeTab"
+        /*"downloads"*/
+    ]
+}
